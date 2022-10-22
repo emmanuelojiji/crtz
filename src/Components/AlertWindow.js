@@ -2,7 +2,8 @@ import "./AlertWindow.scss";
 import Draggble from "react-draggable";
 import errorIcon from "../Media/error.png";
 
-const AlertWindow = () => {
+
+const AlertWindow = ({onClick}) => {
   return (
     <div className="alert-window-container">
       <Draggble>
@@ -22,7 +23,7 @@ const AlertWindow = () => {
                 information may be exposed.
               </p>
               </div>
-              <button>OK</button>
+              <button onClick={onClick}>OK</button>
      
           </div>
         </div>
