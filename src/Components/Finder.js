@@ -1,12 +1,16 @@
 import "./Finder.scss";
 import Draggable from "react-draggable";
-import notepad from "../Media/notepad.png";
+import NotepadIcon from "./NotepadIcon";
 
 const Finder = ({ currentFolder, setCurrentFolder }) => {
   const handleChange = (e) => {
     setCurrentFolder(e.target.value);
     console.log(currentFolder);
   };
+
+  const notes = [
+    {name: ""}
+  ]
   return (
     <Draggable>
       <div className="Finder">
@@ -27,15 +31,9 @@ const Finder = ({ currentFolder, setCurrentFolder }) => {
           {currentFolder === "media" && <h1>media</h1>}
           {currentFolder === "notes" && (
             <>
-              <div>
-                <img src={notepad} className="notepad" />
-                <p>Secrets</p>
-              </div>
-
-              <div>
-                <img src={notepad} className="notepad" />
-                <p>Secrets</p>
-              </div>
+             <NotepadIcon/>
+             <NotepadIcon/>
+             <NotepadIcon/>
             </>
           )}
         </div>

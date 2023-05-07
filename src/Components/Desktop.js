@@ -3,45 +3,63 @@ import "./Desktop.scss";
 import FolderClosed from "./FolderClosed";
 import "./global.scss";
 import Taskbar from "./Taskbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Finder from "./Finder";
+import FileWindow from "./FileWindow";
+import { windowsArray } from "./WindowsArray";
 
 const Desktop = () => {
-  const folders = [
-    { folder: "new_releases", folderName: "New Releases" },
-    { folder: "media", folderName: "Media" },
-    { folder: "notes", folderName: "Notes" },
-  ];
+  const [windows, setWindows] = useState(windowsArray);
+
+  const openFolder = (windowId) => {
+    setWindows((prevWindows) => {
+      return prevWindows.map((window) => {
+        if (window.id === windowId) {
+          return { ...window, view: "open" };
+        }
+        return window;
+      });
+    });
+  };
+
+  useEffect(() => {
+    console.log(windows);
+  });
 
   const [alertWindowVisible, setAlertWindowVisible] = useState(true);
   const [currentFolder, setCurrentFolder] = useState("hey");
-  const [finderVisible, setFinderVisible] = useState(false);
+  const [notepadVisible, setNotepadVisible] = useState(false);
 
   return (
     <main>
+      {notepadVisible && <FileWindow />}
+
       {alertWindowVisible && (
         <AlertWindow onClick={() => setAlertWindowVisible(false)} />
       )}
 
-      {finderVisible && (
-        <Finder
-          currentFolder={currentFolder}
-          setCurrentFolder={setCurrentFolder}
-        />
-      )}
-
-      <div class="folder-container">
-        {folders.map(({ folder, folderName }) => (
-          <FolderClosed
-            folderName={folderName}
-            folder={folder}
+      {windows
+        .filter((window) => window.view === "open")
+        .map(() => (
+          <Finder
+            currentFolder={currentFolder}
             setCurrentFolder={setCurrentFolder}
-            setFinderVisible={setFinderVisible}
           />
         ))}
+
+      <div className="folder-container">
+        {windows
+          .filter((window) => window.category === "folder")
+          .map((window) => (
+            <FolderClosed
+              folderName={window.name}
+              key={window.id}
+              onClick={() => openFolder(window.id)}
+            />
+          ))}
       </div>
 
-      <Taskbar />
+      <Taskbar windows={windows} />
     </main>
   );
 };
