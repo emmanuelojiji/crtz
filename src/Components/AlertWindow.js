@@ -1,12 +1,12 @@
 import "./AlertWindow.scss";
-import Draggble from "react-draggable";
+import Draggable from "react-draggable";
 import errorIcon from "../Media/error.png";
 
 
 const AlertWindow = ({onClick}) => {
   return (
     <div className="alert-window-container">
-      <Draggble>
+      <Draggable>
         <div className="alert-window">
           <div className="header">
             <h3>System Virus</h3>
@@ -27,7 +27,7 @@ const AlertWindow = ({onClick}) => {
      
           </div>
         </div>
-      </Draggble>
+      </Draggable>
     </div>
   );
 };

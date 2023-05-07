@@ -1,0 +1,58 @@
+.Finder {
+  height: 300px;
+  width: 100%;
+  max-width: 400px;
+  background: #c0c0c0;
+  background: #c0c0c0;
+  border-top: groove 3px;
+  border-left: groove 3px;
+  border-right: groove 2px;
+  border-bottom: groove 3px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+
+
+  .header {
+    height: 30px;
+    width: 100%;
+    background: #010180;
+    color: white;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  .folders-container {
+    background: white;
+    border: grey solid 2px;
+    width: calc(100% - 12px);
+    margin-bottom: 6px;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .finder-navigation {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+.notepad{
+  width: 35px;
+}
+}
