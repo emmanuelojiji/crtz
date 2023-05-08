@@ -1,21 +1,34 @@
 import "./Finder.scss";
 import Draggable from "react-draggable";
 import NotepadIcon from "./NotepadIcon";
+import { useEffect } from "react";
 
-const Finder = ({ currentFolder, setCurrentFolder }) => {
+const Finder = ({
+  currentFolder,
+  setCurrentFolder,
+  close,
+  minimize,
+  heading,
+  position,
+  onStopDrag,
+  draggablePosition,
+  content,
+  window,
+}) => {
   const handleChange = (e) => {
     setCurrentFolder(e.target.value);
     console.log(currentFolder);
   };
 
-  const notes = [
-    {name: ""}
-  ]
   return (
-    <Draggable>
+    <Draggable defaultPosition={position} onStop={onStopDrag}>
       <div className="Finder">
         <div className="header">
-          <h3>Documents</h3>
+          <h3>{heading}</h3>
+          <div>
+            <h5 onClick={minimize}>Minimize</h5>
+            <h5 onClick={close}>Close</h5>
+          </div>
         </div>
         <div className="finder-navigation">
           <h4>Folder:</h4>
@@ -27,15 +40,12 @@ const Finder = ({ currentFolder, setCurrentFolder }) => {
         </div>
 
         <div className="folders-container">
-          {currentFolder === "new_releases" && <h1>New Releases</h1>}
-          {currentFolder === "media" && <h1>media</h1>}
-          {currentFolder === "notes" && (
+          {window.files.map((file) => (
             <>
-             <NotepadIcon/>
-             <NotepadIcon/>
-             <NotepadIcon/>
+              <img src={window.icon} style={{width: "30px"}}></img>
+              <p>{file.name}</p>
             </>
-          )}
+          ))}
         </div>
       </div>
     </Draggable>

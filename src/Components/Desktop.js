@@ -11,23 +11,18 @@ import { windowsArray } from "./WindowsArray";
 const Desktop = () => {
   const [windows, setWindows] = useState(windowsArray);
 
-  const openFolder = (windowId) => {
+  const changeView = (windowId, view) => {
     setWindows((prevWindows) => {
       return prevWindows.map((window) => {
         if (window.id === windowId) {
-          return { ...window, view: "open" };
+          return { ...window, view: view };
         }
         return window;
       });
     });
   };
 
-  useEffect(() => {
-    console.log(windows);
-  });
-
   const [alertWindowVisible, setAlertWindowVisible] = useState(true);
-  const [currentFolder, setCurrentFolder] = useState("hey");
   const [notepadVisible, setNotepadVisible] = useState(false);
 
   return (
@@ -40,10 +35,13 @@ const Desktop = () => {
 
       {windows
         .filter((window) => window.view === "open")
-        .map(() => (
+        .map((window) => (
           <Finder
-            currentFolder={currentFolder}
-            setCurrentFolder={setCurrentFolder}
+            heading={window.name}
+            close={() => changeView(window.id, "close")}
+            minimize={() => changeView(window.id, "minimized")}
+            position={window.position}
+            window={window}
           />
         ))}
 
@@ -54,12 +52,12 @@ const Desktop = () => {
             <FolderClosed
               folderName={window.name}
               key={window.id}
-              onClick={() => openFolder(window.id)}
+              onClick={() => changeView(window.id, "open")}
             />
           ))}
       </div>
 
-      <Taskbar windows={windows} />
+      <Taskbar windows={windows} changeView={changeView} />
     </main>
   );
 };
