@@ -1,7 +1,7 @@
 import "./Finder.scss";
 import Draggable from "react-draggable";
 import NotepadIcon from "./NotepadIcon";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Finder = ({
   currentFolder,
@@ -11,18 +11,34 @@ const Finder = ({
   heading,
   position,
   onStopDrag,
-  draggablePosition,
-  content,
   window,
+  setWindows,
 }) => {
   const handleChange = (e) => {
     setCurrentFolder(e.target.value);
     console.log(currentFolder);
   };
 
+  const openFile = (windowId, fileId, view) => {
+    setWindows((prevWindows) =>
+      prevWindows.map((window) => {
+        if (window.id !== windowId) return window;
+        return {
+          ...window,
+          files: window.files.map((file) => {
+            if (file.id !== fileId) return file;
+            return { ...file, view };
+          }),
+        };
+      })
+    );
+  };
+
+  const [zIndex, setZIndex] = useState(0)
+
   return (
-    <Draggable defaultPosition={position} onStop={onStopDrag}>
-      <div className="Finder">
+    <Draggable defaultPosition={position}>
+      <div className="Finder" style={{zIndex: zIndex}} onClick={() => setZIndex(5)}>
         <div className="header">
           <h3>{heading}</h3>
           <div>
@@ -41,10 +57,13 @@ const Finder = ({
 
         <div className="folders-container">
           {window.files.map((file) => (
-            <>
-              <img src={window.icon} style={{width: "30px"}}></img>
+            <div
+              className="icon-name-wrap"
+              onClick={() => openFile(window.id, file.id, "open")}
+            >
+              <img src={window.icon} style={{ width: "30px" }}></img>
               <p>{file.name}</p>
-            </>
+            </div>
           ))}
         </div>
       </div>

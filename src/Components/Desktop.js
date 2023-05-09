@@ -5,7 +5,7 @@ import "./global.scss";
 import Taskbar from "./Taskbar";
 import { useEffect, useState } from "react";
 import Finder from "./Finder";
-import FileWindow from "./FileWindow";
+import NotepadWindow from "./NotepadWindow";
 import { windowsArray } from "./WindowsArray";
 
 const Desktop = () => {
@@ -22,16 +22,25 @@ const Desktop = () => {
     });
   };
 
+  useEffect(() => {
+    const files = windowsArray?.[0]?.files;
+    console.log(files);
+  });
+
   const [alertWindowVisible, setAlertWindowVisible] = useState(true);
   const [notepadVisible, setNotepadVisible] = useState(false);
 
   return (
     <main>
-      {notepadVisible && <FileWindow />}
-
       {alertWindowVisible && (
         <AlertWindow onClick={() => setAlertWindowVisible(false)} />
       )}
+
+      {windows.map((window) => {
+        return window.files
+          .filter((file) => file.view === "open")
+          .map((file) => <NotepadWindow content={file.content} />);
+      })}
 
       {windows
         .filter((window) => window.view === "open")
@@ -42,6 +51,7 @@ const Desktop = () => {
             minimize={() => changeView(window.id, "minimized")}
             position={window.position}
             window={window}
+            setWindows={setWindows}
           />
         ))}
 
@@ -52,7 +62,10 @@ const Desktop = () => {
             <FolderClosed
               folderName={window.name}
               key={window.id}
-              onClick={() => changeView(window.id, "open")}
+              onClick={(e) => {
+                changeView(window.id, "open");
+                e.stopPropogation();
+              }}
             />
           ))}
       </div>
