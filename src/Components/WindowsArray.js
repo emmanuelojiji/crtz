@@ -1,5 +1,9 @@
 import NotepadIcon from "../Media/notepad.png";
+import ImageIcon from "../Media/icon-image.png";
 import { DiscountCodes } from "./NotepadWindow";
+
+import image1 from "../Media/image-1.jpg";
+
 
 export const windowsArray = [
   {
@@ -22,20 +26,35 @@ export const windowsArray = [
     ],
   },
   {
-    id: "media",
-    name: "Media",
+    id: "pictures",
+    name: "Pictures",
     category: "folder",
+    icon: ImageIcon,
     view: "closed",
     position: { x: 20, y: 60 },
     draggablePosition: { x: 20, y: 60 },
     files: [
-      { id: "secret", name: "secret", content: "content 1", view: "closed" },
-      { id: "random", name: "random", content: "content 2", view: "closed" },
       {
-        id: "discounts",
+        id: 1,
+        name: "img-1",
+        content: "content 1",
+        view: "closed",
+        src: image1,
+        type: "image",
+      },
+      {
+        id: 2,
+        name: "random",
+        content: "content 2",
+        view: "closed",
+        type: "image",
+      },
+      {
+        id: 3,
         name: "discounts",
         content: "content 3",
         view: "closed",
+        type: "image",
       },
     ],
   },
@@ -54,13 +73,21 @@ export const windowsArray = [
         name: "secret",
         content: <DiscountCodes />,
         view: "closed",
+        type: "document",
       },
-      { id: "random", name: "random", content: "content 2", view: "closed" },
+      {
+        id: "random",
+        name: "random",
+        content: "content 2",
+        view: "closed",
+        type: "document",
+      },
       {
         id: "discounts",
         name: "discounts",
         content: "content 3",
         view: "closed",
+        type: "document",
       },
     ],
   },

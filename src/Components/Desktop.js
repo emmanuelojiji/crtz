@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Finder from "./Finder";
 import NotepadWindow from "./NotepadWindow";
 import { windowsArray } from "./WindowsArray";
+import PictureWindow from "./PictureWindow";
 
 const Desktop = () => {
   const [windows, setWindows] = useState(windowsArray);
@@ -22,10 +23,20 @@ const Desktop = () => {
     });
   };
 
-  useEffect(() => {
-    const files = windowsArray?.[0]?.files;
-    console.log(files);
-  });
+  const changeFileView = (windowId, fileId, view) => {
+    setWindows((prevWindows) =>
+      prevWindows.map((window) => {
+        if (window.id !== windowId) return window;
+        return {
+          ...window,
+          files: window.files.map((file) => {
+            if (file.id !== fileId) return file;
+            return { ...file, view };
+          }),
+        };
+      })
+    );
+  };
 
   const [alertWindowVisible, setAlertWindowVisible] = useState(true);
   const [notepadVisible, setNotepadVisible] = useState(false);
@@ -38,8 +49,28 @@ const Desktop = () => {
 
       {windows.map((window) => {
         return window.files
-          .filter((file) => file.view === "open")
-          .map((file) => <NotepadWindow content={file.content} />);
+          .filter((file) => file.type === "document" && file.view === "open")
+          .map((file) => (
+            <NotepadWindow
+              content={file.content}
+              file={file}
+              changeFileView={changeFileView}
+              window={window}
+            />
+          ));
+      })}
+
+      {windows.map((window) => {
+        return window.files
+          .filter((file) => file.type === "image" && file.view === "open")
+          .map((file) => (
+            <PictureWindow
+              image={file.src}
+              file={file}
+              changeFileView={changeFileView}
+              window={window}
+            />
+          ));
       })}
 
       {windows
@@ -47,11 +78,11 @@ const Desktop = () => {
         .map((window) => (
           <Finder
             heading={window.name}
-            close={() => changeView(window.id, "close")}
-            minimize={() => changeView(window.id, "minimized")}
             position={window.position}
             window={window}
             setWindows={setWindows}
+            changeView={changeView}
+            changeFileView={changeFileView}
           />
         ))}
 

@@ -13,37 +13,28 @@ const Finder = ({
   onStopDrag,
   window,
   setWindows,
+  changeView,
+  changeFileView,
 }) => {
   const handleChange = (e) => {
     setCurrentFolder(e.target.value);
     console.log(currentFolder);
   };
 
-  const openFile = (windowId, fileId, view) => {
-    setWindows((prevWindows) =>
-      prevWindows.map((window) => {
-        if (window.id !== windowId) return window;
-        return {
-          ...window,
-          files: window.files.map((file) => {
-            if (file.id !== fileId) return file;
-            return { ...file, view };
-          }),
-        };
-      })
-    );
-  };
-
-  const [zIndex, setZIndex] = useState(0)
+  const [zIndex, setZIndex] = useState(0);
 
   return (
     <Draggable defaultPosition={position}>
-      <div className="Finder" style={{zIndex: zIndex}} onClick={() => setZIndex(5)}>
+      <div
+        className="Finder"
+        style={{ zIndex: zIndex }}
+        onClick={() => setZIndex(5)}
+      >
         <div className="header">
           <h3>{heading}</h3>
           <div>
-            <h5 onClick={minimize}>Minimize</h5>
-            <h5 onClick={close}>Close</h5>
+            <h5 onClick={() => changeView(window.id, "minimized")}>Minimize</h5>
+            <h5 onClick={() => changeView(window.id, "close")}>Close</h5>
           </div>
         </div>
         <div className="finder-navigation">
@@ -51,7 +42,7 @@ const Finder = ({
           <select onChange={handleChange}>
             <option value="media">Media</option>
             <option value="notes">Notes</option>
-            <option value="new_releases">New Releases</option>
+          <option value="new_releases">New Releases</option>
           </select>
         </div>
 
@@ -59,7 +50,7 @@ const Finder = ({
           {window.files.map((file) => (
             <div
               className="icon-name-wrap"
-              onClick={() => openFile(window.id, file.id, "open")}
+              onClick={() => changeFileView(window.id, file.id, "open")}
             >
               <img src={window.icon} style={{ width: "30px" }}></img>
               <p>{file.name}</p>

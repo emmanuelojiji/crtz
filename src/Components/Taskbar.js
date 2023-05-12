@@ -14,12 +14,12 @@ const Taskbar = ({ windows, changeView }) => {
             (window) => window.view === "open" || window.view === "minimized"
           )
           .map((window) => (
-            <div
+            <button
               className="taskbar-pill"
               onClick={() => changeView(window.id, "open")}
             >
               {window.name}
-            </div>
+            </button>
           ))}
       </div>
 

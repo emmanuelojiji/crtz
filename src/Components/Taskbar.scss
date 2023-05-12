@@ -1,5 +1,5 @@
 .taskbar{
-    height: 30px;
+height: 30px;
     width: 100%;
     background: #c0c0c0;
     position: fixed;
@@ -8,6 +8,13 @@
     align-items: center;
     justify-content: space-between;
     padding-right:20px;
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+
+    button{
+        background: transparent;
+    }
 }
 
 .taskbar-left{
@@ -21,7 +28,13 @@
     display: flex;
     align-items: center;
     width: 70px;
-    background: #c0c0c0;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-weight: bold;
+
+    img{
+        width: 22px;
+    }
 }
 
 
@@ -31,8 +44,12 @@
     width: 120px;
     padding-left: 5px;
     padding-right: 5px;
-    border: solid 2px black;
+   
     display: flex;
     align-items: center;
+
+    &:active{
+        border-style: solid;
+    }
     
 }
