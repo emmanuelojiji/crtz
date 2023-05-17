@@ -4,12 +4,24 @@ import { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 
 const CodeCracker = ({ changeFileView, file, window, image }) => {
-  const codes = [458574, 123456, 238474, 483744];
+  const codes = [
+    { code: 458574, link: "google.com", product: "Brown cargos" },
+    {
+      code: 123456,
+      link: "123.com",
+      product: "Black Cargos",
+      discount: "20% off",
+    },
+    { code: 238474, link: "google.com", product: "Black hoodie" },
+  ];
   const [userInput, setUserInput] = useState([]);
   const userInputValue = userInput.join("");
 
   const [matchingCode, setMatchingCode] = useState();
+  const [link, setLink] = useState("");
   const [result, setResult] = useState("");
+  const [product, setProduct] = useState("");
+  const [discount, setDiscount] = useState("");
 
   const handleNumberClick = (value) => {
     if (userInput.length < 6) {
@@ -18,10 +30,14 @@ const CodeCracker = ({ changeFileView, file, window, image }) => {
   };
 
   const checkCode = () => {
-    codes.forEach((code) => {
-      if (code == userInputValue) {
-        setMatchingCode(code);
+    codes.forEach((obj) => {
+      if (obj.code == userInputValue) {
+        setMatchingCode(obj.code);
+        setLink(obj.link);
+        setProduct(obj.product);
+        setDiscount(obj.discount);
         setResult("success");
+        console.log();
       } else {
         setUserInput([]);
       }
@@ -60,6 +76,11 @@ const CodeCracker = ({ changeFileView, file, window, image }) => {
               fontWeight: result === "success" && "bold",
             }}
           ></input>
+          {result === "success" && (
+            <a className="link" href={link}>
+              {product} - {discount}
+            </a>
+          )}
           <div className="number-row">
             <button
               className="number-button"

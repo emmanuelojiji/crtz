@@ -1,4 +1,5 @@
 .CodeCracker {
+  max-width: 400px;
   .file-container {
     background: white;
     border: grey solid 2px;
@@ -15,14 +16,14 @@
 
   h2{
     font-size: 30px;
-    margin-top: 50px;
+    margin-top: 25px;
   }
 
   input{
     width: 100%;
     max-width: 70%;
     height: 50px;
-margin-bottom: 50px;
+
 font-size: 30px;
 text-align: center;
   }
@@ -50,5 +51,12 @@ text-align: center;
     height: 60px;
     width: 100px;
     font-size: 30px;
+    margin-bottom: 25px;
+  }
+
+  .link{
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
