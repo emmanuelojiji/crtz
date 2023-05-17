@@ -8,6 +8,7 @@ import Finder from "./Finder";
 import NotepadWindow from "./NotepadWindow";
 import { windowsArray } from "./WindowsArray";
 import PictureWindow from "./PictureWindow";
+import CodeCracker from "./CodeCrackerWindow";
 
 const Desktop = () => {
   const [windows, setWindows] = useState(windowsArray);
@@ -43,6 +44,9 @@ const Desktop = () => {
 
   return (
     <main>
+
+      <CodeCracker/>
+      
       {alertWindowVisible && (
         <AlertWindow onClick={() => setAlertWindowVisible(false)} />
       )}
