@@ -52,7 +52,7 @@ const Finder = ({
               className="icon-name-wrap"
               onClick={() => changeFileView(window.id, file.id, "open")}
             >
-              <img src={window.icon} style={{ width: "30px" }}></img>
+              <img src={file.icon} style={{ width: "30px" }}></img>
               <p>{file.name}</p>
             </div>
           ))}

@@ -1,55 +1,102 @@
-.taskbar{
-height: 30px;
-    width: 100%;
-    background: #c0c0c0;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right:20px;
-    padding-top: 2px;
-    padding-left: 2px;
-    padding-bottom: 2px;
+.taskbar {
+  height: 30px;
+  width: 100%;
+  background: #c0c0c0;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+  padding-top: 2px;
+  padding-left: 2px;
+  padding-bottom: 2px;
 
-    button{
-        background: transparent;
-    }
+  button {
+    background: transparent;
+  }
 }
 
-.taskbar-left{
-    display: flex;
-    align-items: center;
-    height: 100%;
-    gap: 3px;
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 3px;
 }
 
-.start-button{
-    display: flex;
-    align-items: center;
-    width: 70px;
-    padding-left: 2px;
-    padding-right: 2px;
-    font-weight: bold;
+.start-button {
+  display: flex;
+  align-items: center;
+  width: 70px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-weight: bold;
 
-    img{
-        width: 22px;
-    }
+  img {
+    width: 22px;
+  }
 }
 
+.taskbar-pill {
+  min-height: 100%;
+  width: 120px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  display: flex;
+  align-items: center;
+
+  &:active {
+    border-style: solid;
+  }
+}
+
+.start-menu {
+
+  width: 250px;
+  background: #c0c0c0;
+  position: absolute;
+  border-color:#FFFFFF #808080 #808080 #FFFFFF;
+  border-style:solid;
+  border-width: 3px;
+  display: flex;
+
+  left: 0;
+  bottom: 30px;
+}
+
+.start-menu-logo {
+  width: 30px;
+  background: rgb(127, 127, 127);
+
+  h2 {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    color: rgb(75, 75, 75);
+  }
+}
+
+.start-menu-right{
+    flex: 1;
+}
+
+.menu-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  
 
 
-.taskbar-pill{
-    min-height: 100%;
-    width: 120px;
-    padding-left: 5px;
-    padding-right: 5px;
-   
-    display: flex;
-    align-items: center;
 
-    &:active{
-        border-style: solid;
-    }
-    
+  &:hover{
+    background: #010180;
+    color: white;
+  }
+  img {
+    width: 30px;
+    margin-right: 10px;
+  }
 }

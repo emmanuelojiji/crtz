@@ -1,6 +1,6 @@
 import AlertWindow from "./AlertWindow";
 import "./Desktop.scss";
-import FolderClosed from "./FolderClosed";
+import FolderClosed from "./DesktopIcon";
 import "./global.scss";
 import Taskbar from "./Taskbar";
 import { useEffect, useState } from "react";
@@ -9,6 +9,8 @@ import NotepadWindow from "./NotepadWindow";
 import { windowsArray } from "./WindowsArray";
 import PictureWindow from "./PictureWindow";
 import CodeCracker from "./CodeCrackerWindow";
+import folderClosed from "../Media/folder-closed.png";
+import DesktopIcon from "./DesktopIcon";
 
 const Desktop = () => {
   const [windows, setWindows] = useState(windowsArray);
@@ -40,16 +42,34 @@ const Desktop = () => {
   };
 
   const [alertWindowVisible, setAlertWindowVisible] = useState(true);
-  const [notepadVisible, setNotepadVisible] = useState(false);
 
   return (
     <main>
+      {windows
+        .filter(
+          (window) => window.id === "code_cracker" && window.view === "open"
+        )
+        .map((window) => (
+          <CodeCracker window={window} changeView={changeView} />
+        ))}
 
-      <CodeCracker/>
-      
       {alertWindowVisible && (
         <AlertWindow onClick={() => setAlertWindowVisible(false)} />
       )}
+
+      <div className="folder-container">
+        {windows.map((window) => (
+          <DesktopIcon
+            folderName={window.name}
+            key={window.id}
+            image={window.icon}
+            onClick={(e) => {
+              changeView(window.id, "open");
+              e.stopPropogation();
+            }}
+          />
+        ))}
+      </div>
 
       {windows.map((window) => {
         return window.files
@@ -78,7 +98,9 @@ const Desktop = () => {
       })}
 
       {windows
-        .filter((window) => window.view === "open")
+        .filter(
+          (window) => window.view === "open" && window.category === "folder"
+        )
         .map((window) => (
           <Finder
             heading={window.name}
@@ -89,21 +111,6 @@ const Desktop = () => {
             changeFileView={changeFileView}
           />
         ))}
-
-      <div className="folder-container">
-        {windows
-          .filter((window) => window.category === "folder")
-          .map((window) => (
-            <FolderClosed
-              folderName={window.name}
-              key={window.id}
-              onClick={(e) => {
-                changeView(window.id, "open");
-                e.stopPropogation();
-              }}
-            />
-          ))}
-      </div>
 
       <Taskbar windows={windows} changeView={changeView} />
     </main>

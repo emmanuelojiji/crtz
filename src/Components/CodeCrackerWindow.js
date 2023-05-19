@@ -3,16 +3,27 @@ import { useEffect, useState } from "react";
 
 import Draggable from "react-draggable";
 
-const CodeCracker = ({ changeFileView, file, window, image }) => {
+const CodeCracker = ({ changeView, window, image }) => {
   const codes = [
-    { code: 458574, link: "google.com", product: "Brown cargos" },
     {
       code: 123456,
-      link: "123.com",
+      link: "http://link.com",
       product: "Black Cargos",
       discount: "20% off",
     },
-    { code: 238474, link: "google.com", product: "Black hoodie" },
+
+    {
+      code: 243898,
+      link: "http://link.com",
+      product: "White vest",
+      discount: "15% off",
+    },
+    {
+      code: 243898,
+      link: "http://link.com",
+      product: "Oversized Tee",
+      discount: "10% off",
+    },
   ];
   const [userInput, setUserInput] = useState([]);
   const userInputValue = userInput.join("");
@@ -52,13 +63,13 @@ const CodeCracker = ({ changeFileView, file, window, image }) => {
           <div className="header-right">
             <button
               className="header-close"
-              onClick={() => changeFileView(window.id, file.id, "minimized")}
+              onClick={() => changeView(window.id, "minimized")}
             >
               -
             </button>
             <button
               className="header-close"
-              onClick={() => changeFileView(window.id, file.id, "close")}
+              onClick={() => changeView(window.id, "close")}
             >
               x
             </button>
