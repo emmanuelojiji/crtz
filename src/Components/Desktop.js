@@ -9,11 +9,17 @@ import NotepadWindow from "./NotepadWindow";
 import { windowsArray } from "./WindowsArray";
 import PictureWindow from "./PictureWindow";
 import CodeCracker from "./CodeCrackerWindow";
-import folderClosed from "../Media/folder-closed.png";
 import DesktopIcon from "./DesktopIcon";
+import SettingsWindow from "./SettingsWindow";
+
+import wallpaper_1 from "../Media/wallpaper-1.jpg";
+import wallpaper_2 from "../Media/wallpaper-2.jpg";
+import wallpaper_3 from "../Media/wallpaper-3.jpeg";
 
 const Desktop = () => {
   const [windows, setWindows] = useState(windowsArray);
+
+  const [currentWallpaper, setCurrentWallpaper] = useState(wallpaper_1);
 
   const changeView = (windowId, view) => {
     setWindows((prevWindows) => {
@@ -44,7 +50,14 @@ const Desktop = () => {
   const [alertWindowVisible, setAlertWindowVisible] = useState(true);
 
   return (
-    <main>
+    <main style={{ backgroundImage: `url(${currentWallpaper})` }}>
+      <SettingsWindow
+        currentWallpaper={currentWallpaper}
+        setCurrentWallpaper={setCurrentWallpaper}
+        wallpaper_1={wallpaper_1}
+        wallpaper_2={wallpaper_2}
+        wallpaper_3={wallpaper_3}
+      />
       {windows
         .filter(
           (window) => window.id === "code_cracker" && window.view === "open"

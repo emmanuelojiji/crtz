@@ -1,0 +1,77 @@
+.computer-outer {
+  width: 200px;
+  height: 180px;
+  background: #c0c0c0;
+  border-color: #e6e6e6 #808080 #808080 #e6e6e6;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.computer-inner {
+  height: 80%;
+  width: 80%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wallpaper-container {
+  width: 100%;
+  border: groove 2px rgb(180, 180, 180);
+  margin-top: 20px;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+input[type="radio"] {
+  width: 15px;
+  height: auto;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-ok {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-bottom: 5px;
+  background: #c0c0c0;
+  border-color: #e6e6e6 #5c5c5c #5c5c5c #e6e6e6;
+  border-style: solid;
+  border-width: 3px;
+}
+
+.input-container{
+  flex: 1;
+}
+
+.button-container {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  padding-right: 5px;
+  gap: 5px;
+}
+
+.container-heading {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background:#c0c0c0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
