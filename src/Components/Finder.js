@@ -32,9 +32,19 @@ const Finder = ({
       >
         <div className="header">
           <h3>{heading}</h3>
-          <div>
-            <h5 onClick={() => changeView(window.id, "minimized")}>Minimize</h5>
-            <h5 onClick={() => changeView(window.id, "close")}>Close</h5>
+          <div className="header-right">
+            <button
+              className="header-close"
+              onClick={() => changeView(window.id, "minimized")}
+            >
+              -
+            </button>
+            <button
+              className="header-close"
+              onClick={() => changeView(window.id, "close")}
+            >
+              x
+            </button>
           </div>
         </div>
         <div className="finder-navigation">

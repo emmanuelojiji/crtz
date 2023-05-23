@@ -1,5 +1,6 @@
 import NotepadIcon from "../Media/notepad.png";
 import ImageIcon from "../Media/icon-image.png";
+import SettingsIcon from "../Media/icon-settings.png"
 import { DiscountCodes } from "./NotepadWindow";
 import RecyclyingBinIcon from "../Media/icon-recycling-bin.png";
 import FolderClosedIcon from "../Media/folder-closed.png";
@@ -33,8 +34,7 @@ export const windowsArray = [
     category: "folder",
     icon: FolderClosedIcon,
     view: "closed",
-    position: { x: 20, y: 60 },
-    draggablePosition: { x: 20, y: 60 },
+    position: { x: 200, y: 50 },
     files: [
       {
         id: 1,
@@ -70,7 +70,7 @@ export const windowsArray = [
     category: "folder",
     icon: FolderClosedIcon,
     view: "closed",
-    position: { x: 10, y: 50 },
+    position: { x: -200, y: 50 },
     draggablePosition: { x: 10, y: 50 },
     files: [
       {
@@ -137,5 +137,14 @@ export const windowsArray = [
         view: "closed",
       },
     ],
+  },
+
+  {
+    id: "settings",
+    name: "settings",
+    category: "app",
+    icon:SettingsIcon,
+    view: "closed",
+    files: [],
   },
 ];

@@ -51,13 +51,20 @@ const Desktop = () => {
 
   return (
     <main style={{ backgroundImage: `url(${currentWallpaper})` }}>
-      <SettingsWindow
-        currentWallpaper={currentWallpaper}
-        setCurrentWallpaper={setCurrentWallpaper}
-        wallpaper_1={wallpaper_1}
-        wallpaper_2={wallpaper_2}
-        wallpaper_3={wallpaper_3}
-      />
+      {windows
+        .filter((window) => window.id === "settings" && window.view === "open")
+        .map((window) => (
+          <SettingsWindow
+            window={window}
+            changeView={changeView}
+            currentWallpaper={currentWallpaper}
+            setCurrentWallpaper={setCurrentWallpaper}
+            wallpaper_1={wallpaper_1}
+            wallpaper_2={wallpaper_2}
+            wallpaper_3={wallpaper_3}
+          />
+        ))}
+
       {windows
         .filter(
           (window) => window.id === "code_cracker" && window.view === "open"

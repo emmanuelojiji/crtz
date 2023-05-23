@@ -63,3 +63,18 @@
     width: 35px;
   }
 }
+
+.header-right{
+  display: flex;
+}
+
+
+.header-close {
+  background: #c0c0c0;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
