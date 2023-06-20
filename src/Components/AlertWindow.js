@@ -22,7 +22,9 @@ const AlertWindow = ({ onClick }) => {
                 information may be exposed.
               </p>
             </div>
-            <button onClick={onClick}>OK</button>
+            <button onClick={onClick} onTouchEnd={onClick}>
+              OK
+            </button>
           </div>
         </div>
       </Draggable>
