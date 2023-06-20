@@ -1,6 +1,6 @@
 .CodeCracker {
   max-width: 400px;
-  
+
   .file-container {
     background: white;
     border: grey solid 2px;
@@ -15,39 +15,43 @@
     background: #c0c0c0;
   }
 
-  h2{
+  h2 {
     font-size: 30px;
     margin-top: 25px;
   }
 
-  input{
+  input {
     width: 100%;
-    max-width: 70%;
-    height: 50px;
 
-font-size: 30px;
-text-align: center;
+    height: 30px;
+
+    font-size: 30px;
+    text-align: right;
   }
 
-  .number-row{
+  .row {
     display: flex;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 20px;
   }
 
-  .number-button{
-    height: 60px;
-    width: 60px;
+  .number-button {
+    height: 45px;
+    flex: 1;
     background: transparent;
-    font-size: 30px;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .go{
+  .number{
+    color: blue;
+  }
+
+  .go {
     background: transparent;
     height: 60px;
     width: 100px;
@@ -55,7 +59,7 @@ text-align: center;
     margin-bottom: 25px;
   }
 
-  .link{
+  .link {
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 10px;

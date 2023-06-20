@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import Draggable from "react-draggable";
 
-const CodeCracker = ({ changeView, window, image }) => {
+const CodeCracker = ({ changeView, window }) => {
   const codes = [
     {
       code: 123456,
@@ -26,7 +26,7 @@ const CodeCracker = ({ changeView, window, image }) => {
     },
   ];
   const [userInput, setUserInput] = useState([]);
-  const userInputValue = userInput.join("");
+  let userInputValue = userInput.join("");
 
   const [matchingCode, setMatchingCode] = useState();
   const [link, setLink] = useState("");
@@ -39,6 +39,10 @@ const CodeCracker = ({ changeView, window, image }) => {
       setUserInput([...userInput, value]);
     }
   };
+
+  useEffect(() => {
+    console.log(userInputValue);
+  });
 
   const checkCode = () => {
     codes.forEach((obj) => {
@@ -59,7 +63,7 @@ const CodeCracker = ({ changeView, window, image }) => {
     <Draggable handle=".header">
       <div className="CodeCracker FileWindow">
         <div className="header">
-          <h3>Code Cracker</h3>
+          <h3>Calculator</h3>
           <div className="header-right">
             <button
               className="header-close"
@@ -77,11 +81,16 @@ const CodeCracker = ({ changeView, window, image }) => {
         </div>
 
         <div className="file-container">
-          <h2>Code Cracker</h2>
           <input
             readOnly
             type="text"
-            value={matchingCode ? matchingCode : userInputValue}
+            value={
+              matchingCode
+                ? matchingCode
+                : userInputValue > 0
+                ? userInputValue
+                : "0."
+            }
             style={{
               color: result === "success" && "green",
               fontWeight: result === "success" && "bold",
@@ -92,83 +101,156 @@ const CodeCracker = ({ changeView, window, image }) => {
               {product} - {discount}
             </a>
           )}
-          <div className="number-row">
+          <div className="row">
             <button
               className="number-button"
               value="1"
               onClick={(e) => handleNumberClick(e.target.value)}
             >
-              1
+              MC
             </button>
             <button
-              className="number-button"
-              value="2"
-              onClick={(e) => handleNumberClick(e.target.value)}
-            >
-              2
-            </button>
-            <button
-              className="number-button"
-              value="3"
-              onClick={(e) => handleNumberClick(e.target.value)}
-            >
-              3
-            </button>
-          </div>
-          <div className="number-row">
-            <button
-              className="number-button"
-              value="4"
-              onClick={(e) => handleNumberClick(e.target.value)}
-            >
-              4
-            </button>
-            <button
-              className="number-button"
-              value="5"
-              onClick={(e) => handleNumberClick(e.target.value)}
-            >
-              5
-            </button>
-            <button
-              className="number-button"
-              value="6"
-              onClick={(e) => handleNumberClick(e.target.value)}
-            >
-              6
-            </button>
-          </div>
-          <div className="number-row">
-            <button
-              className="number-button"
+              className="number-button number"
               value="7"
               onClick={(e) => handleNumberClick(e.target.value)}
             >
               7
             </button>
             <button
-              className="number-button"
+              className="number-button number"
               value="8"
               onClick={(e) => handleNumberClick(e.target.value)}
             >
               8
             </button>
             <button
-              className="number-button"
+              className="number-button number"
               value="9"
               onClick={(e) => handleNumberClick(e.target.value)}
             >
               9
             </button>
-          </div>
-          <div className="number-row">
-            <button className="number-button" value="0">
-              0
+            <button
+              className="number-button"
+              value="/"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              /
             </button>
           </div>
-          <button className="go" onClick={() => checkCode()}>
-            Go
-          </button>
+
+          <div className="row">
+            <button
+              className="number-button"
+              value="1"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              MR
+            </button>
+            <button
+              className="number-button number"
+              value="4"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              4
+            </button>
+            <button
+              className="number-button number"
+              value="5"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              5
+            </button>
+            <button
+              className="number-button number"
+              value="6"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              6
+            </button>
+            <button
+              className="number-button"
+              value="*"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              *
+            </button>
+          </div>
+
+          <div className="row">
+            <button
+              className="number-button"
+              value="1"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              MS
+            </button>
+            <button
+              className="number-button number"
+              value="1"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              1
+            </button>
+            <button
+              className="number-button number"
+              value="2"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              2
+            </button>
+            <button
+              className="number-button number"
+              value="3"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              3
+            </button>
+            <button
+              className="number-button"
+              value="-"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              -
+            </button>
+          </div>
+
+          <div className="row">
+            <button
+              className="number-button"
+              value="1"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              M+
+            </button>
+            <button
+              className="number-button number"
+              value="1"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              0
+            </button>
+            <button
+              className="number-button"
+              value="1"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              +/-
+            </button>
+            <button
+              className="number-button"
+              value="+"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              +
+            </button>
+            <button
+              className="number-button"
+              onClick={(e) => handleNumberClick(e.target.value)}
+            >
+              =
+            </button>
+          </div>
         </div>
       </div>
     </Draggable>

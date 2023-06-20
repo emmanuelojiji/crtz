@@ -11,10 +11,7 @@ const SettingsWindow = ({
   currentWallpaper,
   setCurrentWallpaper,
 }) => {
-  const changeWallpaper = (wallpaper) => {
-    setCurrentWallpaper(wallpaper);
-  };
-
+ 
   const [preview, setPreview] = useState(currentWallpaper);
 
   return (

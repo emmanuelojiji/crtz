@@ -2,8 +2,7 @@ import "./AlertWindow.scss";
 import Draggable from "react-draggable";
 import errorIcon from "../Media/error.png";
 
-
-const AlertWindow = ({onClick}) => {
+const AlertWindow = ({ onClick }) => {
   return (
     <div className="alert-window-container">
       <Draggable>
@@ -13,18 +12,17 @@ const AlertWindow = ({onClick}) => {
           </div>
 
           <div class="alert-window-wrap">
-          <div className="icon-text-wrap">
-            <div>
-            <img src={errorIcon} draggable="false"></img>
-            </div>
-         
+            <div className="icon-text-wrap">
+              <div>
+                <img src={errorIcon} draggable="false"></img>
+              </div>
+
               <p>
                 Your system has been compromised Your files and sensitive
                 information may be exposed.
               </p>
-              </div>
-              <button onClick={onClick}>OK</button>
-     
+            </div>
+            <button onClick={onClick}>OK</button>
           </div>
         </div>
       </Draggable>

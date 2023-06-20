@@ -67,7 +67,7 @@ const Desktop = () => {
 
       {windows
         .filter(
-          (window) => window.id === "code_cracker" && window.view === "open"
+          (window) => window.id === "calculator" && window.view === "open"
         )
         .map((window) => (
           <CodeCracker window={window} changeView={changeView} />

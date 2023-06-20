@@ -10,8 +10,8 @@ import image1 from "../Media/image-1.jpg";
 
 export const windowsArray = [
   {
-    id: "new_releases",
-    name: "New Releases",
+    id: "future_releases",
+    name: "Future releases",
     category: "folder",
     icon: FolderClosedIcon,
     view: "closed",
@@ -120,8 +120,8 @@ export const windowsArray = [
     ],
   },
   {
-    id: "code_cracker",
-    name: "Code Cracker",
+    id: "calculator",
+    name: "calculator",
     category: "app",
     icon:AppIcon,
     view: "closed",
