@@ -3,7 +3,7 @@ import Draggable from "react-draggable";
 
 const DesktopIcon = ({ folderName, onClick, image }) => {
   return (
-    <div class="folder-container" onClick={onClick}>
+    <div class="folder-container" onClick={onClick} onTouchEnd={onClick}>
       <Draggable>
         <div className="folder-closed-container">
           <img src={image} className="desktop-item" draggable="false"/>
