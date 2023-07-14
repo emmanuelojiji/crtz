@@ -7,7 +7,7 @@ const CodeCracker = ({ changeView, window }) => {
   const codes = [
     {
       code: 123456,
-      link: "http://link.com",
+      link: "https://www.crtz.xyz/password",
       product: "Black Cargos",
       discount: "20% off",
     },
@@ -41,8 +41,8 @@ const CodeCracker = ({ changeView, window }) => {
   };
 
   useEffect(() => {
-    console.log(userInputValue);
-  });
+    checkCode()
+  },[userInput])
 
   const checkCode = () => {
     codes.forEach((obj) => {
@@ -52,9 +52,7 @@ const CodeCracker = ({ changeView, window }) => {
         setProduct(obj.product);
         setDiscount(obj.discount);
         setResult("success");
-        console.log();
-      } else {
-        setUserInput([]);
+        console.log("omg yay");
       }
     });
   };
@@ -97,7 +95,7 @@ const CodeCracker = ({ changeView, window }) => {
             }}
           ></input>
           {result === "success" && (
-            <a className="link" href={link}>
+            <a className="link" href={link} target="_blank">
               {product} - {discount}
             </a>
           )}
@@ -246,7 +244,9 @@ const CodeCracker = ({ changeView, window }) => {
             </button>
             <button
               className="number-button"
-              onClick={(e) => handleNumberClick(e.target.value)}
+              onClick={(e) => {
+                handleNumberClick(e.target.value);
+              }}
             >
               =
             </button>

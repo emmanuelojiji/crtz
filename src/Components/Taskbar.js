@@ -18,7 +18,7 @@ const Taskbar = ({ windows, changeView }) => {
             {windows
               //.filter((window) => window.category === "folder")
               .map((window) => (
-                <div className="menu-option">
+                <div className="menu-option" onClick={() => changeView(window.id, "open")}>
                   <img src={window.icon} />
                   <span>{window.name}</span>
                 </div>

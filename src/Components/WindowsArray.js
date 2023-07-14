@@ -1,6 +1,6 @@
 import NotepadIcon from "../Media/notepad.png";
 import ImageIcon from "../Media/icon-image.png";
-import SettingsIcon from "../Media/icon-settings.png"
+import SettingsIcon from "../Media/icon-settings.png";
 import { DiscountCodes } from "./NotepadWindow";
 import RecyclyingBinIcon from "../Media/icon-recycling-bin.png";
 import FolderClosedIcon from "../Media/folder-closed.png";
@@ -39,7 +39,7 @@ export const windowsArray = [
       {
         id: 1,
         name: "img-1",
-        content: "content 1",
+        content: "image 1",
         view: "closed",
         src: image1,
         type: "image",
@@ -47,16 +47,16 @@ export const windowsArray = [
       },
       {
         id: 2,
-        name: "random",
-        content: "content 2",
+        name: "img-2",
+        content: "image 2",
         view: "closed",
         type: "image",
         icon: ImageIcon,
       },
       {
         id: 3,
-        name: "discounts",
-        content: "content 3",
+        name: "img-3",
+        content: "image 3",
         view: "closed",
         type: "image",
         icon: ImageIcon,
@@ -123,7 +123,7 @@ export const windowsArray = [
     id: "calculator",
     name: "calculator",
     category: "app",
-    icon:AppIcon,
+    icon: AppIcon,
     view: "closed",
     position: { x: 20, y: 20 },
     draggablePosition: { x: 20, y: 20 },
@@ -143,7 +143,7 @@ export const windowsArray = [
     id: "settings",
     name: "settings",
     category: "app",
-    icon:SettingsIcon,
+    icon: SettingsIcon,
     view: "closed",
     files: [],
   },

@@ -17,7 +17,10 @@ import wallpaper_2 from "../Media/wallpaper-2.jpg";
 import wallpaper_3 from "../Media/wallpaper-3.jpeg";
 
 const Desktop = () => {
+  const [alertWindowVisible, setAlertWindowVisible] = useState(true);
+
   const [windows, setWindows] = useState(windowsArray);
+  let orderCounter = 0;
 
   const [currentWallpaper, setCurrentWallpaper] = useState(wallpaper_1);
 
@@ -25,7 +28,7 @@ const Desktop = () => {
     setWindows((prevWindows) => {
       return prevWindows.map((window) => {
         if (window.id === windowId) {
-          return { ...window, view: view };
+          return { ...window, view: view, order: orderCounter++ };
         }
         return window;
       });
@@ -46,8 +49,6 @@ const Desktop = () => {
       })
     );
   };
-
-  const [alertWindowVisible, setAlertWindowVisible] = useState(true);
 
   return (
     <main style={{ backgroundImage: `url(${currentWallpaper})` }}>
