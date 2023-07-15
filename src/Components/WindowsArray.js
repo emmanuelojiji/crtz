@@ -109,11 +109,11 @@ export const windowsArray = [
     position: { x: 20, y: 20 },
     draggablePosition: { x: 20, y: 20 },
     files: [
-      { id: "secret", name: "secret", content: "content 1", view: "closed" },
-      { id: "random", name: "random", content: "content 2", view: "closed" },
+      { id: "secret", name: "tech pack", content: "content 1", view: "closed" },
+      { id: "random", name: "file", content: "content 2", view: "closed" },
       {
         id: "discounts",
-        name: "discounts",
+        name: "file",
         content: "content 3",
         view: "closed",
       },

@@ -47,14 +47,7 @@ const Finder = ({
             </button>
           </div>
         </div>
-        <div className="finder-navigation">
-          <h4>Folder:</h4>
-          <select onChange={handleChange}>
-            <option value="media">Media</option>
-            <option value="notes">Notes</option>
-          <option value="new_releases">New Releases</option>
-          </select>
-        </div>
+        
 
         <div className="folders-container">
           {window.files.map((file) => (

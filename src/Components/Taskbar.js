@@ -3,9 +3,12 @@ import start from "../Media/start.png";
 import { useState } from "react";
 import computerIcon from "../Media/icon-computer.png";
 import settingsIcon from "../Media/icon-settings.png";
+import { useRef } from "react";
 
 const Taskbar = ({ windows, changeView }) => {
   const [startMenuOpen, setStartMenuOpen] = useState(false);
+
+  const startMenuRef = useRef(null)
 
   return (
     <div className="taskbar">
